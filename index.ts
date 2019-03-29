@@ -76,7 +76,7 @@ const possibleValues = (board: Board, i: number, j: number) => {
 
 }
 
-const main = (board: Board) => {
+export const main = (board: Board) => {
     let i: number = 0;
     let j: number = 0;
 
@@ -134,18 +134,3 @@ const printBoardPretty = (board: Board) => {
         console.log(row)
     }
 }
-
-let typeBoard : Board = [
-    [8,7,6,9,0,0,0,0,0],
-    [0,1,0,0,0,6,0,0,0],
-    [0,4,0,3,0,5,8,0,0],
-    [4,0,0,0,0,0,2,1,0],
-    [0,9,0,5,0,0,0,0,0],
-    [0,5,0,0,4,0,3,0,6],
-    [0,2,9,0,0,0,0,0,8],
-    [0,0,4,6,9,0,1,7,3],
-    [0,0,0,0,0,1,0,0,4]
-]
-
-// console.log(board)
-main(typeBoard)
