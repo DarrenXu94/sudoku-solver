@@ -1,4 +1,4 @@
-import { Board } from './types'
+import { Board, Board9x9 } from './types'
 let boardColsRows = 9;
 let range = 10;
 
@@ -76,7 +76,7 @@ const possibleValues = (board: Board, i: number, j: number) => {
 
 }
 
-export const main = (board: Board) => {
+export const SudokuSolver = (board: Board9x9<number>) => {
     let i: number = 0;
     let j: number = 0;
 
@@ -109,7 +109,7 @@ export const main = (board: Board) => {
         for (z = 1; z < range; z++) { 
             if (possibilities[z] != 0) {
                 board[i][j] = possibilities[z];
-                main(board)
+                SudokuSolver(board)
             }
         }
         board[i][j] = 0
