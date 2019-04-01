@@ -1,8 +1,8 @@
-import { Board, Board9x9 } from './types'
+import { Board9x9 } from './types'
 let boardColsRows = 9;
 let range = 10;
 
-const isBoardFull = (board: Board) => {
+const isBoardFull = (board: Board9x9<number>) => {
     let i;
     let j;
     for (i = 0; i < boardColsRows; i++) { 
@@ -13,7 +13,7 @@ const isBoardFull = (board: Board) => {
     return true
 }
 
-const possibleValues = (board: Board, i: number, j: number) => {
+const possibleValues = (board: Board9x9<number>, i: number, j: number) => {
     let possibilityArray: any = {}
     let z;
     for (z = 1; z < range; z++) { 
@@ -76,7 +76,7 @@ const possibleValues = (board: Board, i: number, j: number) => {
 
 }
 
-export const SudokuSolver = (board: Board9x9<number>) => {
+export const SudokuSolver = (board: Board9x9<number>, cb: (result:Board9x9<number>)=> void) => {
     let i: number = 0;
     let j: number = 0;
 
@@ -84,7 +84,7 @@ export const SudokuSolver = (board: Board9x9<number>) => {
 
     // Base case
     if (isBoardFull(board)) {
-        printBoardPretty(board)
+        cb(board)
     } else {
         // Find first vacant spot
         let x, y;
@@ -109,15 +109,15 @@ export const SudokuSolver = (board: Board9x9<number>) => {
         for (z = 1; z < range; z++) { 
             if (possibilities[z] != 0) {
                 board[i][j] = possibilities[z];
-                SudokuSolver(board)
-            }
+                SudokuSolver(board, cb)
+            } 
         }
         board[i][j] = 0
 
     }
 }
 
-const printBoardPretty = (board: Board) => {
+export const printBoardPretty = (board: Board9x9<number>) => {
     let x, y;
         
     for (x = 0; x < boardColsRows; x++) { 
