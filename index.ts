@@ -8,7 +8,7 @@ const isBoardFull = (board: Board9x9<number>) => {
     for (i = 0; i < boardColsRows; i++) { 
         for (j = 0; j < boardColsRows; j++) { 
             if (board[i][j] == 0) return false
-        }        
+        }   
     }
     return true
 }
@@ -76,7 +76,7 @@ const possibleValues = (board: Board9x9<number>, i: number, j: number) => {
 
 }
 
-export const SudokuSolver = (board: Board9x9<number>, cb: (result:Board9x9<number>)=> void) => {
+export const SudokuSolver = (board: Board9x9<number>) => {
     let i: number = 0;
     let j: number = 0;
 
@@ -84,7 +84,7 @@ export const SudokuSolver = (board: Board9x9<number>, cb: (result:Board9x9<numbe
 
     // Base case
     if (isBoardFull(board)) {
-        cb(board)
+        return Promise.resolve(board)
     } else {
         // Find first vacant spot
         let x, y;
@@ -109,7 +109,7 @@ export const SudokuSolver = (board: Board9x9<number>, cb: (result:Board9x9<numbe
         for (z = 1; z < range; z++) { 
             if (possibilities[z] != 0) {
                 board[i][j] = possibilities[z];
-                SudokuSolver(board, cb)
+                return Promise.resolve(board)
             } 
         }
         board[i][j] = 0

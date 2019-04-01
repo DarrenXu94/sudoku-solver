@@ -25,9 +25,9 @@ let sudokuMedium: Board9x9<number> = [
     [0,0,0,0,4,0,0,0,9]
 ]
 
-const cb = (resultBoard: Board9x9<number>) => {
-
-    printBoardPretty(resultBoard)
+const main = async() => {
+    let res = await SudokuSolver(sudokuMedium)
+    console.log(res)
 }
 
-let resultBoard = SudokuSolver(sudokuMedium, cb)
+main()
