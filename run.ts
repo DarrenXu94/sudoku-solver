@@ -1,4 +1,4 @@
-import { SudokuSolver, printBoardPretty } from './index'
+import { SudokuSolver, printBoardPretty, mainSolver } from './index'
 import { Board9x9 } from './types'
 
 let typeBoard = [
@@ -25,9 +25,9 @@ let sudokuMedium: Board9x9<number> = [
     [0,0,0,0,4,0,0,0,9]
 ]
 
-const main = async() => {
-    let res = await SudokuSolver(sudokuMedium)
-    console.log(res)
+
+const main = () => {
+    SudokuSolver(sudokuMedium, (res)=>console.log(res))
 }
 
 main()
