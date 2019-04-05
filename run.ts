@@ -26,8 +26,9 @@ let sudokuMedium: Board9x9<number> = [
 ]
 
 
-const main = () => {
+const main = async () => {
     SudokuSolver(sudokuMedium, (res)=>console.log(res))
+    // console.log(JSON.parse(result))
 }
 
 main()
