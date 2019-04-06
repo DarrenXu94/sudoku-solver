@@ -76,16 +76,6 @@ const possibleValues = (board: Board9x9<number>, i: number, j: number) => {
 
 }
 
-// export const mainSolver = (board: Board9x9<number>) => {
-//     return new Promise((res,rej)=> {
-
-//         SudokuSolver(board, (val)=>{
-//             console.log(val)
-//             res(val)
-//         })
-//     })
-// }
-
 export const SudokuSolver = async (board: Board9x9<number>, cb: (result:Board9x9<number>)=> void) => {
     let i: number = 0;
     let j: number = 0;
@@ -94,9 +84,7 @@ export const SudokuSolver = async (board: Board9x9<number>, cb: (result:Board9x9
 
     // Base case
     if (isBoardFull(board)) {
-        // console.log(typeof(JSON.stringify(board)))
         cb(board)
-        // return Promise.resolve(JSON.stringify(board))
     } else {
         // Find first vacant spot
         let x, y;
@@ -117,7 +105,6 @@ export const SudokuSolver = async (board: Board9x9<number>, cb: (result:Board9x9
         possibilities = possibleValues( board, i , j )
 
         // Recurse
-        // let boardArray = []
 
         let z
         for (z = 1; z < range; z++) { 
@@ -128,10 +115,6 @@ export const SudokuSolver = async (board: Board9x9<number>, cb: (result:Board9x9
             } 
         }
         board[i][j] = 0
-        // let resolvedBoards = await Promise.all(boardArray)
-        // let filtered = resolvedBoards.find(el => el != undefined && typeof(el) == 'string')
-        // return filtered
-
     }
 }
 
