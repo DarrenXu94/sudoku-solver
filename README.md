@@ -30,8 +30,12 @@ let typeBoard = [
     [0,0,0,0,0,1,0,0,4]
 ]
 
-SudokuSolver(typeBoard)
+SudokuSolver(typeBoard, (res)=>console.log(res))
 ```
+
+## Output
+
+The solved board can be accessed with a callback function passed into the SudokuSolver as a parameter.
 
 ## How it solves the Sudoku
 
